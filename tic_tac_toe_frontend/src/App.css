@@ -1,6 +1,14 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
+  /* Light theme colors (custom palette for Tic-Tac-Toe UI) */
+  --ttt-accent: #10b981;
+  --ttt-primary: #1f2937;
+  --ttt-secondary: #f9fafb;
+  --ttt-board-bg: #f4f6f8;
+  --ttt-square-bg: #f9fafb;
+  --ttt-border-color: #e2e8f0;
+  --ttt-board-radius: 22px;
+
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --text-primary: #282c34;
@@ -101,4 +109,81 @@
     padding: 8px 16px;
     font-size: 12px;
   }
+
+  .score-panel {
+    padding: 10px 10px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ========================= */
+/* TTT Modern Board & Layout */
+/* ========================= */
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 8px;
+  margin: 0 auto;
+  border-radius: var(--ttt-board-radius);
+  background: var(--ttt-board-bg);
+  padding: 14px 0;
+}
+.ttt-square {
+  background: var(--ttt-square-bg);
+  color: var(--ttt-primary);
+  border: 1.5px solid var(--ttt-border-color);
+  border-radius: 13px;
+  font-size: 32px;
+  font-weight: bold;
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+  transition: background 0.15s, border 0.16s, color 0.14s;
+  -webkit-tap-highlight-color: transparent;
+}
+.ttt-square:hover,
+.ttt-square:focus {
+  background: #e0e7ef;
+  border-color: var(--ttt-accent);
+  outline: none;
+}
+.ttt-square[disabled] {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Score panel custom */
+.score-panel {
+  background: var(--ttt-secondary);
+  border-radius: 12px;
+  padding: 20px 28px;
+  color: var(--ttt-primary);
+  box-shadow: 0 2px 16px rgba(31,41,55,.09);
+}
+
+/* Game history styles */
+.history-wrapper {
+  background: #f4f6f8;
+  border-radius: 10px;
+  margin-top: 32px;
+  padding: 18px;
+  color: var(--ttt-primary);
+  text-align: left;
+  box-shadow: 0 1px 7px rgba(31,41,55,.04);
+}
+
+/* Hide spin buttons on number inputs for username prompts etc */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Generic */
+body, .App {
+  /* override base light theme for TTT */
+  background: var(--ttt-secondary) !important;
 }
